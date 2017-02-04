@@ -1,0 +1,233 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:app="http://schemas.android.com/apk/res-auto"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:background="#F3F3F3"
+              android:orientation="vertical">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="5dp"
+        android:layout_marginTop="60dp"
+        android:gravity="center_horizontal"
+        android:text="选择一个任务"
+        android:textColor="@android:color/black"
+        android:textSize="20sp"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:text="在接下来的25分钟，专注做这件事"
+        android:textColor="@android:color/black"
+        android:textSize="16sp"/>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:layout_marginTop="20dp"
+        android:orientation="horizontal">
+
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1">
+
+            <TextView
+                android:id="@+id/tv_work"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:drawablePadding="5dp"
+                android:drawableTop="@mipmap/ic_launcher"
+                android:gravity="center"
+                android:text="@string/work"/>
+
+            <View
+                android:layout_width="wrap_content"
+                android:layout_height="0.5dp"
+                android:layout_alignParentBottom="true"
+                android:background="@android:color/darker_gray"
+                android:visibility="invisible"/>
+
+        </RelativeLayout>
+
+        <View
+            android:layout_width="0.5dp"
+            android:layout_height="match_parent"
+            android:background="@android:color/darker_gray"/>
+
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1">
+
+            <TextView
+                android:id="@+id/tv_study"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:drawablePadding="5dp"
+                android:drawableTop="@mipmap/ic_launcher"
+                android:gravity="center"
+                android:text="@string/study"/>
+
+            <View
+                android:layout_width="wrap_content"
+                android:layout_height="0.5dp"
+                android:layout_alignParentBottom="true"
+                android:background="@android:color/darker_gray"
+                android:visibility="invisible"/>
+
+        </RelativeLayout>
+
+        <View
+            android:layout_width="0.5dp"
+            android:layout_height="match_parent"
+            android:background="@android:color/darker_gray"/>
+
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1">
+
+            <TextView
+                android:id="@+id/tv_think"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:drawablePadding="5dp"
+                android:drawableTop="@mipmap/ic_launcher"
+                android:gravity="center"
+                android:text="@string/think"/>
+
+            <View
+                android:layout_width="wrap_content"
+                android:layout_height="0.5dp"
+                android:layout_alignParentBottom="true"
+                android:background="@android:color/darker_gray"
+                android:visibility="invisible"/>
+
+        </RelativeLayout>
+
+
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:background="@android:color/darker_gray"/>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:orientation="horizontal">
+
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1">
+
+            <TextView
+                android:id="@+id/tv_write"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:drawablePadding="5dp"
+                android:drawableTop="@mipmap/ic_launcher"
+                android:gravity="center"
+                android:text="@string/write"/>
+
+            <View
+                android:layout_width="wrap_content"
+                android:layout_height="0.5dp"
+                android:layout_alignParentBottom="true"
+                android:background="@android:color/darker_gray"
+                android:visibility="invisible"/>
+
+        </RelativeLayout>
+
+        <View
+            android:layout_width="0.5dp"
+            android:layout_height="match_parent"
+            android:background="@android:color/darker_gray"/>
+
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1">
+
+            <TextView
+                android:id="@+id/tv_sport"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:drawablePadding="5dp"
+                android:drawableTop="@mipmap/ic_launcher"
+                android:gravity="center"
+                android:text="@string/sport"/>
+
+            <View
+                android:layout_width="wrap_content"
+                android:layout_height="0.5dp"
+                android:layout_alignParentBottom="true"
+                android:background="@android:color/darker_gray"
+                android:visibility="invisible"/>
+
+        </RelativeLayout>
+
+        <View
+            android:layout_width="0.5dp"
+            android:layout_height="match_parent"
+            android:background="@android:color/darker_gray"/>
+
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1">
+
+            <TextView
+                android:id="@+id/tv_read"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:drawablePadding="5dp"
+                android:drawableTop="@mipmap/ic_launcher"
+                android:gravity="center"
+                android:text="@string/read"/>
+
+            <View
+                android:layout_width="wrap_content"
+                android:layout_height="0.5dp"
+                android:layout_alignParentBottom="true"
+                android:background="@android:color/darker_gray"
+                android:visibility="invisible"/>
+
+        </RelativeLayout>
+
+
+    </LinearLayout>
+
+
+    <me.takimitsuha.tomatoalarmclock.view.StateButton
+        android:id="@+id/stroke_test"
+        android:layout_width="160dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="50dp"
+        android:padding="10dp"
+        android:text="@string/start"
+        app:animationDuration="200"
+        app:normalStrokeColor="#6495ED"
+        app:normalStrokeWidth="1dp"
+        app:normalTextColor="#6495ED"
+        app:pressedBackgroundColor="@color/colorPrimaryDark"
+        app:pressedTextColor="@android:color/white"
+        app:radius="2dp"
+        app:round="true"/>
+
+</LinearLayout>
