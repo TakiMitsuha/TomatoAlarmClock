@@ -1,14 +1,16 @@
 <resources>
     <string name="app_name">TomatoAlarmClock</string>
-
-    <string name="work">工作</string>
-    <string name="study">学习</string>
-    <string name="think">思考</string>
-    <string name="write">写作</string>
-    <string name="sport">运动</string>
-    <string name="read">阅读</string>
-    <string name="start">开始计时</string>
-
-    <string name="time">计时</string>
-    <string name="count">统计</string>
+    <string name="work">work</string>
+    <string name="study">study</string>
+    <string name="think">think</string>
+    <string name="write">write</string>
+    <string name="sport">sport</string>
+    <string name="read">read</string>
+    <string name="start">start</string>
+    <string name="stop">stop</string>
+    <string name="reset">reset</string>
+    <string name="time">time</string>
+    <string name="timer_on_time">Time goes up!</string>
+    <string name="roger">roger</string>
+    <string name="play_fail">play fail</string>
 </resources>

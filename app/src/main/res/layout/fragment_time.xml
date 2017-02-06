@@ -3,8 +3,15 @@
               xmlns:app="http://schemas.android.com/apk/res-auto"
               android:layout_width="match_parent"
               android:layout_height="match_parent"
-              android:background="#F3F3F3"
+              android:background="@android:color/white"
               android:orientation="vertical">
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="?attr/colorPrimary"
+        android:minHeight="?attr/actionBarSize"/>
 
     <TextView
         android:layout_width="match_parent"
@@ -21,7 +28,7 @@
         android:layout_height="wrap_content"
         android:gravity="center_horizontal"
         android:text="在接下来的25分钟，专注做这件事"
-        android:textColor="@android:color/black"
+        android:textColor="#666666"
         android:textSize="16sp"/>
 
 
@@ -32,6 +39,7 @@
         android:orientation="horizontal">
 
         <RelativeLayout
+            android:id="@+id/rl_work"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1">
@@ -47,11 +55,12 @@
                 android:text="@string/work"/>
 
             <View
+                android:id="@+id/view_below_work"
                 android:layout_width="wrap_content"
-                android:layout_height="0.5dp"
+                android:layout_height="1dp"
                 android:layout_alignParentBottom="true"
                 android:background="@android:color/darker_gray"
-                android:visibility="invisible"/>
+                android:visibility="gone"/>
 
         </RelativeLayout>
 
@@ -61,6 +70,7 @@
             android:background="@android:color/darker_gray"/>
 
         <RelativeLayout
+            android:id="@+id/rl_study"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1">
@@ -76,11 +86,12 @@
                 android:text="@string/study"/>
 
             <View
+                android:id="@+id/view_below_study"
                 android:layout_width="wrap_content"
-                android:layout_height="0.5dp"
+                android:layout_height="1dp"
                 android:layout_alignParentBottom="true"
                 android:background="@android:color/darker_gray"
-                android:visibility="invisible"/>
+                android:visibility="gone"/>
 
         </RelativeLayout>
 
@@ -90,6 +101,7 @@
             android:background="@android:color/darker_gray"/>
 
         <RelativeLayout
+            android:id="@+id/rl_think"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1">
@@ -105,22 +117,45 @@
                 android:text="@string/think"/>
 
             <View
+                android:id="@+id/view_below_think"
                 android:layout_width="wrap_content"
-                android:layout_height="0.5dp"
+                android:layout_height="1dp"
                 android:layout_alignParentBottom="true"
                 android:background="@android:color/darker_gray"
-                android:visibility="invisible"/>
+                android:visibility="gone"/>
 
         </RelativeLayout>
 
 
     </LinearLayout>
 
-    <View
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="0.5dp"
-        android:background="@android:color/darker_gray"/>
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
 
+        <View
+            android:id="@+id/view1"
+            android:layout_width="0dp"
+            android:layout_height="0.5dp"
+            android:layout_weight="1"
+            android:background="@android:color/darker_gray"/>
+
+        <View
+            android:id="@+id/view2"
+            android:layout_width="0dp"
+            android:layout_height="0.5dp"
+            android:layout_weight="1"
+            android:background="@android:color/darker_gray"/>
+
+        <View
+            android:id="@+id/view3"
+            android:layout_width="0dp"
+            android:layout_height="0.5dp"
+            android:layout_weight="1"
+            android:background="@android:color/darker_gray"/>
+
+    </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -128,6 +163,7 @@
         android:orientation="horizontal">
 
         <RelativeLayout
+            android:id="@+id/rl_write"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1">
@@ -143,11 +179,12 @@
                 android:text="@string/write"/>
 
             <View
+                android:id="@+id/view_below_write"
                 android:layout_width="wrap_content"
-                android:layout_height="0.5dp"
+                android:layout_height="1.5dp"
                 android:layout_alignParentBottom="true"
                 android:background="@android:color/darker_gray"
-                android:visibility="invisible"/>
+                android:visibility="gone"/>
 
         </RelativeLayout>
 
@@ -157,6 +194,7 @@
             android:background="@android:color/darker_gray"/>
 
         <RelativeLayout
+            android:id="@+id/rl_sport"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1">
@@ -172,11 +210,12 @@
                 android:text="@string/sport"/>
 
             <View
+                android:id="@+id/view_below_sport"
                 android:layout_width="wrap_content"
-                android:layout_height="0.5dp"
+                android:layout_height="1.5dp"
                 android:layout_alignParentBottom="true"
                 android:background="@android:color/darker_gray"
-                android:visibility="invisible"/>
+                android:visibility="gone"/>
 
         </RelativeLayout>
 
@@ -186,6 +225,7 @@
             android:background="@android:color/darker_gray"/>
 
         <RelativeLayout
+            android:id="@+id/rl_read"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1">
@@ -201,20 +241,19 @@
                 android:text="@string/read"/>
 
             <View
+                android:id="@+id/view_below_read"
                 android:layout_width="wrap_content"
-                android:layout_height="0.5dp"
+                android:layout_height="1.5dp"
                 android:layout_alignParentBottom="true"
                 android:background="@android:color/darker_gray"
-                android:visibility="invisible"/>
+                android:visibility="gone"/>
 
         </RelativeLayout>
 
-
     </LinearLayout>
 
-
     <me.takimitsuha.tomatoalarmclock.view.StateButton
-        android:id="@+id/stroke_test"
+        android:id="@+id/btn_start"
         android:layout_width="160dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
