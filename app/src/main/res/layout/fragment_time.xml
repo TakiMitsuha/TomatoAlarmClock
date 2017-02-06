@@ -17,7 +17,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="5dp"
-        android:layout_marginTop="60dp"
+        android:layout_marginTop="50dp"
         android:gravity="center_horizontal"
         android:text="选择一个任务"
         android:textColor="@android:color/black"
@@ -26,6 +26,7 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
         android:gravity="center_horizontal"
         android:text="在接下来的25分钟，专注做这件事"
         android:textColor="#666666"

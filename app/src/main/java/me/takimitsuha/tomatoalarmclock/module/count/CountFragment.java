@@ -9,6 +9,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import com.github.mikephil.charting.animation.Easing;
 import com.github.mikephil.charting.charts.LineChart;
@@ -27,7 +28,9 @@ import com.github.mikephil.charting.highlight.Highlight;
 import com.github.mikephil.charting.listener.OnChartValueSelectedListener;
 import com.github.mikephil.charting.utils.ColorTemplate;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 
 import me.takimitsuha.tomatoalarmclock.R;
 
@@ -36,9 +39,14 @@ import me.takimitsuha.tomatoalarmclock.R;
  */
 public class CountFragment extends Fragment implements OnChartValueSelectedListener {
 
-
-    private PieChart mChart;
-    private LineChart mChart2;
+    private TextView tvTodayTotalTomato;
+    private TextView tvTomatoCount;
+    private TextView tvToday;
+    private TextView tvTodayFinishTomato;
+    private TextView tvAverageEveryday;
+    private TextView tvAverageEveryWeek;
+    private PieChart mPieChart;
+    private LineChart mLineChart;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -47,91 +55,101 @@ public class CountFragment extends Fragment implements OnChartValueSelectedListe
         Toolbar toolbar = (Toolbar) view.findViewById(R.id.toolbar);
         toolbar.setTitle("番茄闹钟");
         toolbar.setTitleTextColor(Color.WHITE);
-        mChart = (PieChart) view.findViewById(R.id.chart1);
-        mChart.setUsePercentValues(true);
-        mChart.getDescription().setEnabled(false);
-        mChart.setExtraOffsets(5, 10, 5, 5);
+        tvTodayTotalTomato = (TextView) view.findViewById(R.id.tv_today_total_tomato);
+        tvTomatoCount = (TextView) view.findViewById(R.id.tv_tomato_count);
+        tvToday = (TextView) view.findViewById(R.id.tv_today);
+        tvTodayFinishTomato = (TextView) view.findViewById(R.id.tv_today_finish_tomato);
+        tvAverageEveryday = (TextView) view.findViewById(R.id.tv_average_everyday);
+        tvAverageEveryWeek = (TextView) view.findViewById(R.id.tv_average_every_week);
 
-        mChart.setDragDecelerationFrictionCoef(0.95f);
+        SimpleDateFormat df = new SimpleDateFormat("yyyy年MM月dd日");
+        tvToday.setText(df.format(new Date()).toString());
 
-        mChart.setCenterText("0");
-        mChart.setCenterTextSize(28);
+        mPieChart = (PieChart) view.findViewById(R.id.piechart);
+        mPieChart.setUsePercentValues(true);
+        mPieChart.getDescription().setEnabled(false);
+        mPieChart.setExtraOffsets(5, 10, 5, 5);
 
-        mChart.setDrawHoleEnabled(true);
-        mChart.setHoleColor(Color.WHITE);
+        mPieChart.setDragDecelerationFrictionCoef(0.95f);
 
-        mChart.setTransparentCircleColor(Color.WHITE);
-        mChart.setTransparentCircleAlpha(110);
+        mPieChart.setCenterText("0");
+        mPieChart.setCenterTextSize(28);
 
-        mChart.setHoleRadius(58f);
-        mChart.setTransparentCircleRadius(61f);
+        mPieChart.setDrawHoleEnabled(true);
+        mPieChart.setHoleColor(Color.WHITE);
 
-        mChart.setDrawCenterText(true);
+        mPieChart.setTransparentCircleColor(Color.WHITE);
+        mPieChart.setTransparentCircleAlpha(110);
 
-        mChart.setRotationAngle(0);
+        mPieChart.setHoleRadius(58f);
+        mPieChart.setTransparentCircleRadius(61f);
+
+        mPieChart.setDrawCenterText(true);
+
+        mPieChart.setRotationAngle(0);
         // enable rotation of the chart by touch
-        mChart.setRotationEnabled(true);
-        mChart.setHighlightPerTapEnabled(true);
+        mPieChart.setRotationEnabled(true);
+        mPieChart.setHighlightPerTapEnabled(true);
 
         // add a selection listener
-        mChart.setOnChartValueSelectedListener(this);
+        mPieChart.setOnChartValueSelectedListener(this);
 
         setData(1, 100);
 
-        mChart.animateY(1400, Easing.EasingOption.EaseInOutQuad);
+        mPieChart.animateY(1400, Easing.EasingOption.EaseInOutQuad);
         // mChart.spin(2000, 0, 360);
-        Legend l = mChart.getLegend();
+        Legend l = mPieChart.getLegend();
         l.setEnabled(false);
 
         // entry label styling
-        mChart.setEntryLabelColor(Color.WHITE);
-        mChart.setEntryLabelTextSize(0);
+        mPieChart.setEntryLabelColor(Color.WHITE);
+        mPieChart.setEntryLabelTextSize(0);
 
 
-        mChart2 = (LineChart) view.findViewById(R.id.chart2);
-        mChart2.setOnChartValueSelectedListener(this);
+        mLineChart = (LineChart) view.findViewById(R.id.linechart);
+        mLineChart.setOnChartValueSelectedListener(this);
 
         // no description text
-        mChart2.getDescription().setEnabled(false);
+        mLineChart.getDescription().setEnabled(false);
 
         // enable touch gestures
-        mChart2.setTouchEnabled(true);
+        mLineChart.setTouchEnabled(true);
 
-        mChart2.setDragDecelerationFrictionCoef(0.9f);
+        mLineChart.setDragDecelerationFrictionCoef(0.9f);
 
         // enable scaling and dragging
-        mChart2.setDragEnabled(true);
-        mChart2.setScaleEnabled(true);
-        mChart2.setDrawGridBackground(true);
-        mChart2.setHighlightPerDragEnabled(true);
+        mLineChart.setDragEnabled(true);
+        mLineChart.setScaleEnabled(false);
+        mLineChart.setDrawGridBackground(true);
+        mLineChart.setHighlightPerDragEnabled(true);
 
         // if disabled, scaling can be done on x- and y-axis separately
-        mChart2.setPinchZoom(true);
+        mLineChart.setPinchZoom(true);
 
         // add data
         setData2(7);
 
-        mChart2.animateX(2500);
+        mLineChart.animateX(2500);
 
         // get the legend (only possible after setting data)
-        Legend l2 = mChart2.getLegend();
+        Legend l2 = mLineChart.getLegend();
         l2.setEnabled(false);
 
-        XAxis xAxis = mChart2.getXAxis();
+        XAxis xAxis = mLineChart.getXAxis();
         xAxis.setTextSize(11f);
         xAxis.setPosition(XAxis.XAxisPosition.BOTTOM);
         xAxis.setTextColor(Color.BLUE);
         xAxis.setDrawGridLines(false);
 //        xAxis.setDrawAxisLine(false);
 
-        YAxis leftAxis = mChart2.getAxisLeft();
+        YAxis leftAxis = mLineChart.getAxisLeft();
         leftAxis.setTextColor(ColorTemplate.getHoloBlue());
         leftAxis.setAxisMaximum(100f);
         leftAxis.setAxisMinimum(0f);
         leftAxis.setDrawGridLines(false);
         leftAxis.setGranularityEnabled(true);
 
-        YAxis rightAxis = mChart2.getAxisRight();
+        YAxis rightAxis = mLineChart.getAxisRight();
         rightAxis.setEnabled(false);
         return view;
     }
@@ -187,12 +205,12 @@ public class CountFragment extends Fragment implements OnChartValueSelectedListe
         data.setValueFormatter(new PercentFormatter());
         data.setValueTextSize(0);//去掉百分号
         data.setValueTextColor(Color.WHITE);
-        mChart.setData(data);
+        mPieChart.setData(data);
 
         // undo all highlights
-        mChart.highlightValues(null);
+        mPieChart.highlightValues(null);
 
-        mChart.invalidate();
+        mPieChart.invalidate();
     }
 
     private void setData2(int count) {
@@ -205,12 +223,12 @@ public class CountFragment extends Fragment implements OnChartValueSelectedListe
 
         LineDataSet set;
 
-        if (mChart2.getData() != null &&
-                mChart2.getData().getDataSetCount() > 0) {
-            set = (LineDataSet) mChart2.getData().getDataSetByIndex(0);
+        if (mLineChart.getData() != null &&
+                mLineChart.getData().getDataSetCount() > 0) {
+            set = (LineDataSet) mLineChart.getData().getDataSetByIndex(0);
             set.setValues(yVals1);
-            mChart2.getData().notifyDataChanged();
-            mChart2.notifyDataSetChanged();
+            mLineChart.getData().notifyDataChanged();
+            mLineChart.notifyDataSetChanged();
         } else {
             // create a dataset and give it a type
             set = new LineDataSet(yVals1, "DataSet 1");
@@ -235,7 +253,7 @@ public class CountFragment extends Fragment implements OnChartValueSelectedListe
             data.setValueTextSize(0);
 
             // set data
-            mChart2.setData(data);
+            mLineChart.setData(data);
         }
     }
 
@@ -250,7 +268,7 @@ public class CountFragment extends Fragment implements OnChartValueSelectedListe
         if (e == null)
             return;
         Log.i("VAL SELECTED", "Value: " + e.getY() + ", index: " + h.getX() + ", DataSet index: " + h.getDataSetIndex());
-        mChart2.centerViewToAnimated(e.getX(), e.getY(), mChart.getData().getDataSetByIndex(h.getDataSetIndex()).getAxisDependency(), 500);
+        mLineChart.centerViewToAnimated(e.getX(), e.getY(), mLineChart.getData().getDataSetByIndex(h.getDataSetIndex()).getAxisDependency(), 500);
     }
 
     @Override

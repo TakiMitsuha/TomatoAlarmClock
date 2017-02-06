@@ -42,7 +42,7 @@
                         android:textSize="12sp"/>
 
                     <TextView
-                        android:id="@+id/tv_today_tomato"
+                        android:id="@+id/tv_today_total_tomato"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="0"
@@ -117,11 +117,12 @@
                         android:layout_height="wrap_content"
                         android:text="2017年02月04日"
                         android:textColor="#999999"
-                        android:textSize="10sp"/>
+                        android:textSize="12sp"/>
 
                 </LinearLayout>
 
                 <TextView
+                    android:id="@+id/tv_today_finish_tomato"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentEnd="true"
@@ -137,7 +138,7 @@
                 android:background="@android:color/darker_gray"/>
 
             <com.github.mikephil.charting.charts.PieChart
-                android:id="@+id/chart1"
+                android:id="@+id/piechart"
                 android:layout_width="230dp"
                 android:layout_height="230dp"
                 android:layout_gravity="center"/>
@@ -220,15 +221,17 @@
                         android:textSize="16sp"/>
 
                     <TextView
+                        android:id="@+id/tv_average_everyday"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="平均每天0个番茄"
                         android:textColor="#999999"
-                        android:textSize="10sp"/>
+                        android:textSize="12sp"/>
 
                 </LinearLayout>
 
                 <TextView
+                    android:id="@+id/tv_average_every_week"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentEnd="true"
@@ -244,7 +247,7 @@
                 android:background="@android:color/darker_gray"/>
 
             <com.github.mikephil.charting.charts.LineChart
-                android:id="@+id/chart2"
+                android:id="@+id/linechart"
                 android:layout_width="match_parent"
                 android:layout_height="200dp"
                 android:layout_marginBottom="20dp"/>
