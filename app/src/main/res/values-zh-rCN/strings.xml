@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">番茄闹钟</string>
+    <string name="work">工作</string>
+    <string name="study">学习</string>
+    <string name="think">思考</string>
+    <string name="write">写作</string>
+    <string name="sport">运动</string>
+    <string name="read">阅读</string>
+    <string name="start">开始计时</string>
+    <string name="stop">暂停</string>
+    <string name="reset">重置</string>
+    <string name="time">计时</string>
+    <string name="timer_on_time">计时器时间到了 ！</string>
+    <string name="roger">知道了</string>
+    <string name="play_fail">播放失败</string>
+    <string name="slogan">静下心来，保持专注</string>
+</resources>

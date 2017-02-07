@@ -84,6 +84,6 @@ public class TimerOnTimeActivity extends FragmentActivity implements View.OnClic
         mAudioManager.setStreamVolume(AudioManager.STREAM_MUSIC,
                 mCurrentVolume, AudioManager.ADJUST_SAME);
         finish();
-        overridePendingTransition(0, R.anim.zoomout);
+        overridePendingTransition(0, android.R.anim.fade_in);
     }
 }

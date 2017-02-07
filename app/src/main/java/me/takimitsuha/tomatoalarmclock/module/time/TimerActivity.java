@@ -244,7 +244,7 @@ public class TimerActivity extends FragmentActivity implements View.OnClickListe
      */
     private void stopAlarmClockTimer() {
         finish();
-        overridePendingTransition(0, R.anim.zoomout);
+        overridePendingTransition(0, android.R.anim.fade_out);
         Intent intent = new Intent(getApplicationContext(), TimerOnTimeActivity.class);
         PendingIntent pi = PendingIntent.getActivity(getApplicationContext(),
                 1000, intent, PendingIntent.FLAG_UPDATE_CURRENT);

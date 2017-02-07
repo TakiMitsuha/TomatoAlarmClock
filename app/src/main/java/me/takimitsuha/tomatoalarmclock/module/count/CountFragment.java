@@ -31,6 +31,7 @@ import com.github.mikephil.charting.utils.ColorTemplate;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.Locale;
 
 import me.takimitsuha.tomatoalarmclock.R;
 
@@ -53,7 +54,7 @@ public class CountFragment extends Fragment implements OnChartValueSelectedListe
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_count, container, false);
         Toolbar toolbar = (Toolbar) view.findViewById(R.id.toolbar);
-        toolbar.setTitle("番茄闹钟");
+        toolbar.setTitle(R.string.app_name);
         toolbar.setTitleTextColor(Color.WHITE);
         tvTodayTotalTomato = (TextView) view.findViewById(R.id.tv_today_total_tomato);
         tvTomatoCount = (TextView) view.findViewById(R.id.tv_tomato_count);
@@ -62,8 +63,8 @@ public class CountFragment extends Fragment implements OnChartValueSelectedListe
         tvAverageEveryday = (TextView) view.findViewById(R.id.tv_average_everyday);
         tvAverageEveryWeek = (TextView) view.findViewById(R.id.tv_average_every_week);
 
-        SimpleDateFormat df = new SimpleDateFormat("yyyy年MM月dd日");
-        tvToday.setText(df.format(new Date()).toString());
+        SimpleDateFormat df = new SimpleDateFormat("yyyy年MM月dd日", Locale.CHINA);
+        tvToday.setText(df.format(new Date()));
 
         mPieChart = (PieChart) view.findViewById(R.id.piechart);
         mPieChart.setUsePercentValues(true);
@@ -138,13 +139,13 @@ public class CountFragment extends Fragment implements OnChartValueSelectedListe
         XAxis xAxis = mLineChart.getXAxis();
         xAxis.setTextSize(11f);
         xAxis.setPosition(XAxis.XAxisPosition.BOTTOM);
-        xAxis.setTextColor(Color.BLUE);
+        xAxis.setTextColor(Color.parseColor("#666666"));
         xAxis.setDrawGridLines(false);
 //        xAxis.setDrawAxisLine(false);
 
         YAxis leftAxis = mLineChart.getAxisLeft();
-        leftAxis.setTextColor(ColorTemplate.getHoloBlue());
-        leftAxis.setAxisMaximum(100f);
+        leftAxis.setTextColor(Color.parseColor("#666666"));
+        leftAxis.setAxisMaximum(60f);
         leftAxis.setAxisMinimum(0f);
         leftAxis.setDrawGridLines(false);
         leftAxis.setGranularityEnabled(true);
@@ -177,27 +178,11 @@ public class CountFragment extends Fragment implements OnChartValueSelectedListe
         dataSet.setSliceSpace(3f);
         dataSet.setSelectionShift(5f);
 
-        // add a lot of colors
-
         ArrayList<Integer> colors = new ArrayList<Integer>();
 
-        for (int c : ColorTemplate.VORDIPLOM_COLORS)
-            colors.add(c);
-
-        for (int c : ColorTemplate.JOYFUL_COLORS)
-            colors.add(c);
-
-        for (int c : ColorTemplate.COLORFUL_COLORS)
-            colors.add(c);
-
-        for (int c : ColorTemplate.LIBERTY_COLORS)
-            colors.add(c);
-
-        for (int c : ColorTemplate.PASTEL_COLORS)
-            colors.add(c);
-
-        colors.add(ColorTemplate.getHoloBlue());
-
+        for (int i = 0; i < count; i++) {
+            colors.add(Color.parseColor("#F2F2F2"));
+        }
         dataSet.setColors(colors);
         dataSet.setSelectionShift(0f);
 
@@ -234,7 +219,7 @@ public class CountFragment extends Fragment implements OnChartValueSelectedListe
             set = new LineDataSet(yVals1, "DataSet 1");
 
             set.setAxisDependency(YAxis.AxisDependency.LEFT);
-            set.setColor(ColorTemplate.getHoloBlue());
+            set.setColor(Color.BLUE);
 //            set.setCircleColor(Color.WHITE);
             set.setLineWidth(2f);
             set.setCircleRadius(3f);

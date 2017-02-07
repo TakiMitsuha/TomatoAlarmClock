@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.view.ViewPager;
+import android.view.KeyEvent;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -13,6 +14,7 @@ import me.takimitsuha.tomatoalarmclock.library.tab.PagerBottomTabStrip;
 import me.takimitsuha.tomatoalarmclock.module.Adapter;
 import me.takimitsuha.tomatoalarmclock.module.count.CountFragment;
 import me.takimitsuha.tomatoalarmclock.module.time.TimeFragment;
+import me.takimitsuha.tomatoalarmclock.util.ToastUtil;
 
 public class MainActivity extends FragmentActivity {
 
@@ -51,6 +53,27 @@ public class MainActivity extends FragmentActivity {
         list.add(new CountFragment());
         Adapter adapter = new Adapter(getSupportFragmentManager(), list);
         mViewPager.setAdapter(adapter);
+    }
+
+    private int count = 0;
+
+    private long lastTime = System.currentTimeMillis();
+
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        if (keyCode == KeyEvent.KEYCODE_BACK) {
+            ++count;
+            long off = System.currentTimeMillis() - lastTime;
+            lastTime = System.currentTimeMillis();
+            if (count == 2 && off <= 2000) {
+                finish();
+            } else {
+                count = 1;
+                ToastUtil.showShort(getApplicationContext(), "再按一次退出程序");
+            }
+            return true;
+        }
+        return super.onKeyDown(keyCode, event);
     }
 
 }

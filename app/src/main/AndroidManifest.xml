@@ -12,7 +12,10 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/Theme.Translucent">
-        <activity android:name=".MainActivity">
+        <activity
+            android:name=".module.launch.SplashActivity"
+            android:launchMode="singleTop"
+            android:theme="@style/Theme.Fullscreen">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 
@@ -21,9 +24,15 @@
         </activity>
         <activity
             android:name=".module.time.TimerOnTimeActivity"
+            android:launchMode="singleTop"
             android:screenOrientation="portrait"/>
         <activity
             android:name=".module.time.TimerActivity"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".MainActivity"
+            android:launchMode="singleTask"
             android:screenOrientation="portrait"/>
 
         <service

@@ -13,4 +13,8 @@
         <item name="android:windowNoTitle">true</item>
     </style>
 
+    <style name="Theme.Fullscreen" parent="Theme.Translucent">
+        <item name="android:windowFullscreen">true</item>
+    </style>
+
 </resources>
