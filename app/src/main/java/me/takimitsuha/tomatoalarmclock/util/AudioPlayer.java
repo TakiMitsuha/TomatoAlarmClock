@@ -11,12 +11,6 @@ import java.io.IOException;
 
 import me.takimitsuha.tomatoalarmclock.R;
 
-/**
- * 音频播放器
- *
- * @author 咖枯
- * @version 1.0 2015/05
- */
 public class AudioPlayer {
 
     /**

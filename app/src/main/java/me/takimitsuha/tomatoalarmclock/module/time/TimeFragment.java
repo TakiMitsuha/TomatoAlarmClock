@@ -5,11 +5,13 @@ import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.RelativeLayout;
+import android.widget.TextView;
 
 import me.takimitsuha.tomatoalarmclock.R;
 import me.takimitsuha.tomatoalarmclock.util.ToastUtil;
@@ -36,6 +38,12 @@ public class TimeFragment extends Fragment implements View.OnClickListener {
     private RelativeLayout rlRead;
     private View viewBelowRead;
     private StateButton btnStart;
+    private TextView tvWork;
+    private TextView tvStudy;
+    private TextView tvThink;
+    private TextView tvWrite;
+    private TextView tvSport;
+    private TextView tvRead;
 
     private int index = -1;
 
@@ -64,6 +72,12 @@ public class TimeFragment extends Fragment implements View.OnClickListener {
         rlRead = (RelativeLayout) view.findViewById(R.id.rl_read);
         viewBelowRead = view.findViewById(R.id.view_below_read);
         btnStart = (StateButton) view.findViewById(R.id.btn_start);
+        tvWork = (TextView) view.findViewById(R.id.tv_work);
+        tvStudy = (TextView) view.findViewById(R.id.tv_study);
+        tvThink = (TextView) view.findViewById(R.id.tv_think);
+        tvWrite = (TextView) view.findViewById(R.id.tv_write);
+        tvSport = (TextView) view.findViewById(R.id.tv_sport);
+        tvRead = (TextView) view.findViewById(R.id.tv_read);
         rlWork.setOnClickListener(this);
         rlStudy.setOnClickListener(this);
         rlThink.setOnClickListener(this);
@@ -96,31 +110,46 @@ public class TimeFragment extends Fragment implements View.OnClickListener {
             case R.id.rl_work:
                 hideViews();
                 viewBelowWork.setVisibility(View.VISIBLE);
+                viewBelowWork.setBackgroundColor(Color.parseColor("#5DC1FF"));
+                view1.setBackgroundColor(Color.parseColor("#5DC1FF"));
+                tvWork.setTextColor(Color.parseColor("#333333"));
                 index = 0;
                 break;
             case R.id.rl_study:
                 hideViews();
                 viewBelowStudy.setVisibility(View.VISIBLE);
+                viewBelowStudy.setBackgroundColor(Color.parseColor("#72D72A"));
+                view2.setBackgroundColor(Color.parseColor("#72D72A"));
+                tvStudy.setTextColor(Color.parseColor("#333333"));
                 index = 1;
                 break;
             case R.id.rl_think:
                 hideViews();
                 viewBelowThink.setVisibility(View.VISIBLE);
+                viewBelowThink.setBackgroundColor(Color.parseColor("#FFA517"));
+                view3.setBackgroundColor(Color.parseColor("#FFA517"));
+                tvThink.setTextColor(Color.parseColor("#333333"));
                 index = 2;
                 break;
             case R.id.rl_write:
                 hideViews();
                 viewBelowWrite.setVisibility(View.VISIBLE);
+                viewBelowWrite.setBackgroundColor(Color.parseColor("#16DBD8"));
+                tvWrite.setTextColor(Color.parseColor("#333333"));
                 index = 3;
                 break;
             case R.id.rl_sport:
                 hideViews();
                 viewBelowSport.setVisibility(View.VISIBLE);
+                viewBelowSport.setBackgroundColor(Color.parseColor("#968ED4"));
+                tvSport.setTextColor(Color.parseColor("#333333"));
                 index = 4;
                 break;
             case R.id.rl_read:
                 hideViews();
                 viewBelowRead.setVisibility(View.VISIBLE);
+                viewBelowRead.setBackgroundColor(Color.parseColor("#E35252"));
+                tvRead.setTextColor(Color.parseColor("#333333"));
                 index = 5;
                 break;
             default:
@@ -135,5 +164,14 @@ public class TimeFragment extends Fragment implements View.OnClickListener {
         viewBelowWrite.setVisibility(View.GONE);
         viewBelowSport.setVisibility(View.GONE);
         viewBelowRead.setVisibility(View.GONE);
+        view1.setBackgroundColor(ContextCompat.getColor(getActivity(), android.R.color.darker_gray));
+        view2.setBackgroundColor(ContextCompat.getColor(getActivity(), android.R.color.darker_gray));
+        view3.setBackgroundColor(ContextCompat.getColor(getActivity(), android.R.color.darker_gray));
+        tvWork.setTextColor(Color.parseColor("#999999"));
+        tvStudy.setTextColor(Color.parseColor("#999999"));
+        tvThink.setTextColor(Color.parseColor("#999999"));
+        tvWrite.setTextColor(Color.parseColor("#999999"));
+        tvSport.setTextColor(Color.parseColor("#999999"));
+        tvRead.setTextColor(Color.parseColor("#999999"));
     }
 }

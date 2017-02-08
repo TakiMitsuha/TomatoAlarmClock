@@ -34,6 +34,7 @@ import java.util.Date;
 import java.util.Locale;
 
 import me.takimitsuha.tomatoalarmclock.R;
+import me.takimitsuha.tomatoalarmclock.util.DateUtil;
 
 /**
  * Created by Taki on 2017/2/6.
@@ -65,7 +66,6 @@ public class CountFragment extends Fragment implements OnChartValueSelectedListe
 
         SimpleDateFormat df = new SimpleDateFormat("yyyy年MM月dd日", Locale.CHINA);
         tvToday.setText(df.format(new Date()));
-
         mPieChart = (PieChart) view.findViewById(R.id.piechart);
         mPieChart.setUsePercentValues(true);
         mPieChart.getDescription().setEnabled(false);
@@ -95,7 +95,7 @@ public class CountFragment extends Fragment implements OnChartValueSelectedListe
         // add a selection listener
         mPieChart.setOnChartValueSelectedListener(this);
 
-        setData(1, 100);
+        setData(0, 100);
 
         mPieChart.animateY(1400, Easing.EasingOption.EaseInOutQuad);
         // mChart.spin(2000, 0, 360);
@@ -165,6 +165,14 @@ public class CountFragment extends Fragment implements OnChartValueSelectedListe
     private void setData(int count, float range) {
 
         float mult = range;
+        ArrayList<Integer> colors = new ArrayList<Integer>();
+        if (0 == count) {
+            count = 1;
+            colors.add(Color.parseColor("#F2F2F2"));
+        } else {
+            //判断任务类型
+
+        }
 
         ArrayList<PieEntry> entries = new ArrayList<PieEntry>();
 
@@ -174,15 +182,10 @@ public class CountFragment extends Fragment implements OnChartValueSelectedListe
             entries.add(new PieEntry((float) ((Math.random() * mult) + mult / 5), mParties[i % mParties.length]));
         }
 
-        PieDataSet dataSet = new PieDataSet(entries, "Election Results");
+        PieDataSet dataSet = new PieDataSet(entries, "");
         dataSet.setSliceSpace(3f);
         dataSet.setSelectionShift(5f);
 
-        ArrayList<Integer> colors = new ArrayList<Integer>();
-
-        for (int i = 0; i < count; i++) {
-            colors.add(Color.parseColor("#F2F2F2"));
-        }
         dataSet.setColors(colors);
         dataSet.setSelectionShift(0f);
 
@@ -201,9 +204,9 @@ public class CountFragment extends Fragment implements OnChartValueSelectedListe
     private void setData2(int count) {
 
         ArrayList<Entry> yVals1 = new ArrayList<Entry>();
-
+        Integer[] dates = DateUtil.getXData();
         for (int i = 0; i < count; i++) {
-            yVals1.add(new Entry(i, 0));
+            yVals1.add(new Entry(dates[i], 0));
         }
 
         LineDataSet set;
@@ -216,7 +219,7 @@ public class CountFragment extends Fragment implements OnChartValueSelectedListe
             mLineChart.notifyDataSetChanged();
         } else {
             // create a dataset and give it a type
-            set = new LineDataSet(yVals1, "DataSet 1");
+            set = new LineDataSet(yVals1, "");
 
             set.setAxisDependency(YAxis.AxisDependency.LEFT);
             set.setColor(Color.BLUE);

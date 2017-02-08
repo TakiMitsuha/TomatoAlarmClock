@@ -53,7 +53,8 @@
                 android:drawablePadding="5dp"
                 android:drawableTop="@mipmap/ic_launcher"
                 android:gravity="center"
-                android:text="@string/work"/>
+                android:text="@string/work"
+                android:textColor="#999999"/>
 
             <View
                 android:id="@+id/view_below_work"
@@ -84,7 +85,8 @@
                 android:drawablePadding="5dp"
                 android:drawableTop="@mipmap/ic_launcher"
                 android:gravity="center"
-                android:text="@string/study"/>
+                android:text="@string/study"
+                android:textColor="#999999"/>
 
             <View
                 android:id="@+id/view_below_study"
@@ -115,7 +117,8 @@
                 android:drawablePadding="5dp"
                 android:drawableTop="@mipmap/ic_launcher"
                 android:gravity="center"
-                android:text="@string/think"/>
+                android:text="@string/think"
+                android:textColor="#999999"/>
 
             <View
                 android:id="@+id/view_below_think"
@@ -177,7 +180,8 @@
                 android:drawablePadding="5dp"
                 android:drawableTop="@mipmap/ic_launcher"
                 android:gravity="center"
-                android:text="@string/write"/>
+                android:text="@string/write"
+                android:textColor="#999999"/>
 
             <View
                 android:id="@+id/view_below_write"
@@ -208,7 +212,8 @@
                 android:drawablePadding="5dp"
                 android:drawableTop="@mipmap/ic_launcher"
                 android:gravity="center"
-                android:text="@string/sport"/>
+                android:text="@string/sport"
+                android:textColor="#999999"/>
 
             <View
                 android:id="@+id/view_below_sport"
@@ -239,7 +244,8 @@
                 android:drawablePadding="5dp"
                 android:drawableTop="@mipmap/ic_launcher"
                 android:gravity="center"
-                android:text="@string/read"/>
+                android:text="@string/read"
+                android:textColor="#999999"/>
 
             <View
                 android:id="@+id/view_below_read"
