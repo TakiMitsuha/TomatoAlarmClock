@@ -17,28 +17,27 @@ public class TomatoAlarmClock {
     private Long id;
 
     @Property(nameInDb = "start_time")
-    private Integer startTime;
+    private Long startTime;
 
     @Property(nameInDb = "end_time")
-    private Integer endTime;
+    private Long endTime;
 
     @Property(nameInDb = "pause_time")
-    private Integer pauseTime;
+    private Long pauseTime;
 
     private Integer length;
 
-    private boolean finish;
+    private Integer finish;
 
     @Property(nameInDb = "create_time")
-    private Integer createTime;
+    private Long createTime;
 
     @Property(nameInDb = "task_type")
     private int taskType;
 
-    @Generated(hash = 412579590)
-    public TomatoAlarmClock(Long id, Integer startTime, Integer endTime,
-            Integer pauseTime, Integer length, boolean finish, Integer createTime,
-            int taskType) {
+    @Generated(hash = 1337757456)
+    public TomatoAlarmClock(Long id, Long startTime, Long endTime, Long pauseTime,
+            Integer length, Integer finish, Long createTime, int taskType) {
         this.id = id;
         this.startTime = startTime;
         this.endTime = endTime;
@@ -61,27 +60,27 @@ public class TomatoAlarmClock {
         this.id = id;
     }
 
-    public Integer getStartTime() {
+    public Long getStartTime() {
         return startTime;
     }
 
-    public void setStartTime(Integer startTime) {
+    public void setStartTime(Long startTime) {
         this.startTime = startTime;
     }
 
-    public Integer getEndTime() {
+    public Long getEndTime() {
         return endTime;
     }
 
-    public void setEndTime(Integer endTime) {
+    public void setEndTime(Long endTime) {
         this.endTime = endTime;
     }
 
-    public Integer getPauseTime() {
+    public Long getPauseTime() {
         return pauseTime;
     }
 
-    public void setPauseTime(Integer pauseTime) {
+    public void setPauseTime(Long pauseTime) {
         this.pauseTime = pauseTime;
     }
 
@@ -93,19 +92,19 @@ public class TomatoAlarmClock {
         this.length = length;
     }
 
-    public boolean isFinish() {
+    public Integer getFinish() {
         return finish;
     }
 
-    public void setFinish(boolean finish) {
+    public void setFinish(Integer finish) {
         this.finish = finish;
     }
 
-    public Integer getCreateTime() {
+    public Long getCreateTime() {
         return createTime;
     }
 
-    public void setCreateTime(Integer createTime) {
+    public void setCreateTime(Long createTime) {
         this.createTime = createTime;
     }
 
@@ -117,7 +116,17 @@ public class TomatoAlarmClock {
         this.taskType = taskType;
     }
 
-    public boolean getFinish() {
-        return this.finish;
+    @Override
+    public String toString() {
+        return "TomatoAlarmClock{" +
+                "id=" + id +
+                ", startTime=" + startTime +
+                ", endTime=" + endTime +
+                ", pauseTime=" + pauseTime +
+                ", length=" + length +
+                ", finish=" + finish +
+                ", createTime=" + createTime +
+                ", taskType=" + taskType +
+                '}';
     }
 }

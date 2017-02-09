@@ -33,4 +33,9 @@ public class Constants {
      */
     public static final String IS_STOP = "is_stop";
 
+    /**
+     * 当前任务ID
+     */
+    public static final String CURRENT_TASK_ID = "current_task_id";
+
 }

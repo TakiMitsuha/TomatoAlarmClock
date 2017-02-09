@@ -21,14 +21,26 @@ public class DBUtil {
     /**
      * 完成对数据库表的插入操作-->并且会检测数据库是否存在,不存在自己创建,
      */
-    public boolean insert(TomatoAlarmClock tomatoAlarmClock) {
-        boolean flag = false;
+//    public boolean insert(TomatoAlarmClock tomatoAlarmClock) {
+//        boolean flag = false;
+//        try {
+//            flag = mDBManager.getDaoSession().insert(tomatoAlarmClock) != -1;
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//        }
+//        return flag;
+//    }
+
+    /**
+     * 完成对数据库表的插入操作-->并且会检测数据库是否存在,不存在自己创建,
+     */
+    public long insert(TomatoAlarmClock tomatoAlarmClock) {
         try {
-            flag = mDBManager.getDaoSession().insert(tomatoAlarmClock) != -1;
+            return mDBManager.getDaoSession().insert(tomatoAlarmClock);
         } catch (Exception e) {
             e.printStackTrace();
         }
-        return flag;
+        return -1;
     }
 
     /**

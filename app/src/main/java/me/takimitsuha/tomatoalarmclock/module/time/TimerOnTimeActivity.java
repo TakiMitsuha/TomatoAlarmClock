@@ -12,6 +12,8 @@ import android.view.WindowManager;
 import android.widget.Button;
 
 import me.takimitsuha.tomatoalarmclock.R;
+import me.takimitsuha.tomatoalarmclock.db.DBUtil;
+import me.takimitsuha.tomatoalarmclock.entity.TomatoAlarmClock;
 import me.takimitsuha.tomatoalarmclock.library.timer.OttoAppConfig;
 import me.takimitsuha.tomatoalarmclock.library.timer.TimerOnTimeEvent;
 import me.takimitsuha.tomatoalarmclock.common.Constants;
@@ -39,6 +41,13 @@ public class TimerOnTimeActivity extends FragmentActivity implements View.OnClic
         initViews();
 
         OttoAppConfig.getInstance().post(new TimerOnTimeEvent());
+
+        SharedPreferences preferences = getSharedPreferences(
+                Constants.EXTRA_WEAC_SHARE, Activity.MODE_PRIVATE);
+        long currentTaskID = preferences.getLong(Constants.CURRENT_TASK_ID, 0);
+        TomatoAlarmClock clock = new DBUtil(getBaseContext()).loadByKey(currentTaskID);
+        clock.setFinish(1);
+        new DBUtil(getBaseContext()).update(clock);
     }
 
     private void playRing() {

@@ -24,6 +24,8 @@ import java.util.Calendar;
 
 import me.takimitsuha.tomatoalarmclock.R;
 import me.takimitsuha.tomatoalarmclock.common.Constants;
+import me.takimitsuha.tomatoalarmclock.db.DBUtil;
+import me.takimitsuha.tomatoalarmclock.entity.TomatoAlarmClock;
 import me.takimitsuha.tomatoalarmclock.library.timer.OttoAppConfig;
 import me.takimitsuha.tomatoalarmclock.library.timer.TimeModel;
 import me.takimitsuha.tomatoalarmclock.library.timer.TimerOnTimeEvent;
@@ -160,6 +162,13 @@ public class TimerActivity extends FragmentActivity implements View.OnClickListe
                 mTimer.reset();
                 stopCountDown();
                 setStratLlytVisible();
+
+                SharedPreferences preferences = getSharedPreferences(
+                        Constants.EXTRA_WEAC_SHARE, Activity.MODE_PRIVATE);
+                long currentTaskID = preferences.getLong(Constants.CURRENT_TASK_ID, 0);
+                TomatoAlarmClock clock = new DBUtil(getBaseContext()).loadByKey(currentTaskID);
+                clock.setPauseTime(System.currentTimeMillis());
+                new DBUtil(getBaseContext()).update(clock);
                 break;
             default:
                 break;

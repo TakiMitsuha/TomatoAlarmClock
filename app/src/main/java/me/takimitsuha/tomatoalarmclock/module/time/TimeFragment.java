@@ -1,6 +1,8 @@
 package me.takimitsuha.tomatoalarmclock.module.time;
 
+import android.app.Activity;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -14,6 +16,9 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import me.takimitsuha.tomatoalarmclock.R;
+import me.takimitsuha.tomatoalarmclock.common.Constants;
+import me.takimitsuha.tomatoalarmclock.db.DBUtil;
+import me.takimitsuha.tomatoalarmclock.entity.TomatoAlarmClock;
 import me.takimitsuha.tomatoalarmclock.util.ToastUtil;
 import me.takimitsuha.tomatoalarmclock.view.StateButton;
 
@@ -106,6 +111,14 @@ public class TimeFragment extends Fragment implements View.OnClickListener {
                 intent.setClass(getActivity(), TimerActivity.class);
                 intent.putExtra("index", index);
                 startActivity(intent);
+                // 进行数据保存操作
+                TomatoAlarmClock tomato = new TomatoAlarmClock(null, System.currentTimeMillis(), null, null, 25, 0, System.currentTimeMillis(), index);
+                long id = new DBUtil(getContext()).insert(tomato);
+                SharedPreferences preferences = getContext().getSharedPreferences(
+                        Constants.EXTRA_WEAC_SHARE, Activity.MODE_PRIVATE);
+                SharedPreferences.Editor editor = preferences.edit();
+                editor.putLong(Constants.CURRENT_TASK_ID, id);
+                editor.apply();
                 break;
             case R.id.rl_work:
                 hideViews();
