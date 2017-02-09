@@ -309,12 +309,12 @@ public class CountFragment extends Fragment implements OnChartValueSelectedListe
         getTodayTomato();
         getAllTomatoes();
         getTodayFinishTomato();
+        setLineChartData();
     }
 
     private void getTodayTomato() {
         List<TomatoAlarmClock> list = mDBManager.getDaoSession().queryRaw(TomatoAlarmClock.class, "WHERE create_time >= ? AND create_time <= ?", new String[]{DateUtil.getStartTime() + "", DateUtil.getEndTime() + ""});
         tvTodayTotalTomato.setText(list == null ? "0" : list.size() + "");
-        setDataChart(list);
     }
 
     private void getAllTomatoes() {
@@ -325,12 +325,12 @@ public class CountFragment extends Fragment implements OnChartValueSelectedListe
     private void getTodayFinishTomato() {
         List<TomatoAlarmClock> list = mDBManager.getDaoSession().queryRaw(TomatoAlarmClock.class, "WHERE create_time >= ? AND create_time <= ? AND finish = ?", new String[]{DateUtil.getStartTime() + "", DateUtil.getEndTime() + "", "1"});
         tvTodayFinishTomato.setText(list == null ? "0个番茄" : list.size() + "个番茄");
-
+        setPieChartData(list);
     }
 
-    private void setDataChart(List<TomatoAlarmClock> list) {
+    private void setLineChartData() {
         // add data
-        setPieChartData(list);
+
         //计算出最近7天，包括今天的番茄
         //7天总共番茄数
         List<TomatoAlarmClock> list2 = mDBManager.getDaoSession().queryRaw(TomatoAlarmClock.class, "WHERE create_time >= ? AND create_time <= ? AND finish = ?", new String[]{DateUtil.getStartTimeByParam(6) + "", DateUtil.getEndTime() + "", "1"});
@@ -339,7 +339,7 @@ public class CountFragment extends Fragment implements OnChartValueSelectedListe
         if (0 == (list2 == null ? 0 : list2.size())) {
             tvAverageEveryday.setText("0个番茄");
         } else {
-            String everyday = new Formatter().format("%.2f", (float) (list2 == null ? 0 : (list2.size() / 7))).toString();
+            String everyday = new Formatter().format("%.2f", (float) (list2.size() / 7)).toString();
             tvAverageEveryday.setText(everyday + "个番茄");
         }
         //算出最近7天每天的番茄数
