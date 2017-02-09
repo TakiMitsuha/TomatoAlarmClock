@@ -23,6 +23,7 @@ import com.github.mikephil.charting.data.LineDataSet;
 import com.github.mikephil.charting.data.PieData;
 import com.github.mikephil.charting.data.PieDataSet;
 import com.github.mikephil.charting.data.PieEntry;
+import com.github.mikephil.charting.formatter.DefaultValueFormatter;
 import com.github.mikephil.charting.formatter.PercentFormatter;
 import com.github.mikephil.charting.highlight.Highlight;
 import com.github.mikephil.charting.listener.OnChartValueSelectedListener;
@@ -31,7 +32,6 @@ import com.github.mikephil.charting.utils.ColorTemplate;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.Formatter;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
@@ -264,22 +264,22 @@ public class CountFragment extends Fragment implements OnChartValueSelectedListe
 
             set.setAxisDependency(YAxis.AxisDependency.LEFT);
             set.setColor(Color.BLUE);
-//            set.setCircleColor(Color.WHITE);
             set.setLineWidth(2f);
             set.setCircleRadius(3f);
             set.setFillAlpha(65);
-            set.setFillColor(ColorTemplate.getHoloBlue());
+            set.setFillColor(Color.WHITE);
             set.setHighLightColor(Color.rgb(244, 117, 117));
             set.setDrawCircleHole(false);
             //set.setFillFormatter(new MyFillFormatter(0f));
             //set.setDrawHorizontalHighlightIndicator(false);
 //            set.setVisible(false);
-            set.setCircleColor(Color.parseColor("#5DC1FF"));
+            set.setCircleColor(ColorTemplate.getHoloBlue());
 
             // create a data object with the datasets
             LineData data = new LineData(set);
-//            data.setValueTextColor(Color.WHITE);
-            data.setValueTextSize(0);
+            data.setValueTextColor(Color.RED);
+            data.setValueTextSize(9f);
+            data.setValueFormatter(new DefaultValueFormatter(0));
 
             // set data
             mLineChart.setData(data);
@@ -335,12 +335,13 @@ public class CountFragment extends Fragment implements OnChartValueSelectedListe
         //7天总共番茄数
         List<TomatoAlarmClock> list2 = mDBManager.getDaoSession().queryRaw(TomatoAlarmClock.class, "WHERE create_time >= ? AND create_time <= ? AND finish = ?", new String[]{DateUtil.getStartTimeByParam(6) + "", DateUtil.getEndTime() + "", "1"});
         tvAverageEveryWeek.setText(list2 == null ? "0个番茄" : list2.size() + "个番茄");
+
         //平均每天番茄数
-        if (0 == (list2 == null ? 0 : list2.size())) {
-            tvAverageEveryday.setText("0个番茄");
+        if (0 == list2.size()) {
+            tvAverageEveryday.setText("平均每天0个番茄");
         } else {
-            String everyday = new Formatter().format("%.2f", (float) (list2.size() / 7)).toString();
-            tvAverageEveryday.setText(everyday + "个番茄");
+//            String everyday = new Formatter().format("%.2f", (float) (list2.size() / 7)).toString();
+            tvAverageEveryday.setText("平均每天" + (list2.size() / 7) + "个番茄");
         }
         //算出最近7天每天的番茄数
         List<TomatoAlarmClock> listOne = mDBManager.getDaoSession().queryRaw(TomatoAlarmClock.class, "WHERE create_time >= ? AND create_time <= ? AND finish = ?", new String[]{DateUtil.getStartTimeByParam(6) + "", DateUtil.getEndTimeByParam(6) + "", "1"});
