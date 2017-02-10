@@ -26,6 +26,7 @@ import com.github.mikephil.charting.data.PieEntry;
 import com.github.mikephil.charting.formatter.DefaultValueFormatter;
 import com.github.mikephil.charting.formatter.PercentFormatter;
 import com.github.mikephil.charting.highlight.Highlight;
+import com.github.mikephil.charting.interfaces.datasets.ILineDataSet;
 import com.github.mikephil.charting.listener.OnChartValueSelectedListener;
 import com.github.mikephil.charting.utils.ColorTemplate;
 
@@ -288,6 +289,14 @@ public class CountFragment extends Fragment implements OnChartValueSelectedListe
 
             // set data
             mLineChart.setData(data);
+
+            List<ILineDataSet> sets = mLineChart.getData().getDataSets();
+            for (ILineDataSet iSet : sets) {
+                LineDataSet s = (LineDataSet) iSet;
+                s.getFillColor();
+                s.setDrawFilled(true);
+                s.setMode(LineDataSet.Mode.CUBIC_BEZIER);
+            }
         }
     }
 
