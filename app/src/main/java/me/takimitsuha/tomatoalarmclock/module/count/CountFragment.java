@@ -38,6 +38,7 @@ import java.util.Locale;
 import java.util.Map;
 
 import me.takimitsuha.tomatoalarmclock.R;
+import me.takimitsuha.tomatoalarmclock.custom.MyMarkerView;
 import me.takimitsuha.tomatoalarmclock.db.DBManager;
 import me.takimitsuha.tomatoalarmclock.db.DBUtil;
 import me.takimitsuha.tomatoalarmclock.entity.TomatoAlarmClock;
@@ -139,6 +140,10 @@ public class CountFragment extends Fragment implements OnChartValueSelectedListe
         mLineChart.setPinchZoom(true);
 
         mLineChart.animateX(2500);
+
+        MyMarkerView mv = new MyMarkerView(getContext(), R.layout.custom_marker_view);
+        mv.setChartView(mLineChart); // For bounds control
+        mLineChart.setMarker(mv); // Set the marker to the chart
 
         // get the legend (only possible after setting data)
         Legend l2 = mLineChart.getLegend();
